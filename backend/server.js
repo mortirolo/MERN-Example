@@ -1,7 +1,12 @@
 const express = require('express');  // Backend web framework
+const colors = require('colors');
 const dotenv = require('dotenv').config();  // Use environment vars
 const {errorHandler} = require('./middleware/errorMiddleware');
+const connectDB = require('./config/db');  // import db connection
 const port = process.env.PORT || 5000;  // Run server on port in .env, default 5000
+
+// Run our DB
+connectDB();
 
 const app = express();  // Initialize express
 
