@@ -17,6 +17,7 @@ app.use(express.urlencoded({extended: false}))  // For url-encoded data
 // Request path:  (Note: We specify the base URL path here)
 // server -> goalRoutes -> goalControllers
 app.use('/api/goals', require('./routes/goalRoutes'));
+app.use('/api/users', require('./routes/userRoutes'));
 
 app.use(errorHandler)
 
