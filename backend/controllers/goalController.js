@@ -1,5 +1,6 @@
 const asyncHandler = require('express-async-handler');  // Use express error handler to handle async-await statements instead of try-catch
 const Goal = require('../models/goalModel.js');
+const User = require('../models/userModel.js');
 
 // Prior to connecting to MongDB
 // const getGoals = (req, res) => {
@@ -13,7 +14,8 @@ const Goal = require('../models/goalModel.js');
 // @route   GET /api/goals
 // @access  Private
 const getGoals = asyncHandler(async (req, res) => {
-  const goals = await Goal.find()
+  //const goals = await Goal.find()
+  const goals = await Goal.find({ user: req.user.id })
 
   // res.status(200).json({message:'Get goals'})  // wo/ DB
   res.status(200).json(goals)
@@ -37,7 +39,8 @@ const setGoal = asyncHandler(async (req, res) => {
     throw new Error('Please add a text field')  
   }
     const goal = await Goal.create({
-      text: req.body.text
+      text: req.body.text,
+      user: req.user.id
     })
 
     //res.status(200).json({message: 'Set goal'}) // specify that 
@@ -54,6 +57,20 @@ const updateGoal = asyncHandler(async (req, res) => {
   if(!goal) {
     res.status(400)
     throw new Error('Goal not found')
+  }
+
+  // Get user's info
+  const user = await User.findById(req.user.id)
+  
+  // Check if user exists
+  if (!user) {
+    res.status(401)
+    throw new Error('User not found')
+  }
+  // Make sure logged-in user owns goal
+  if (goal.user.toString() !== user.id) {
+    res.status(401)
+    throw new Error('User not authorized')
   }
 
   // Update the goal entry
@@ -74,6 +91,20 @@ const deleteGoal = asyncHandler(async (req, res) => {
   if(!goal) {
     res.status(400)
     throw new Error('Goal not found')
+  }
+
+  // Get user's info
+  const user = await User.findById(req.user.id)
+  
+  // Check if user exists
+  if (!user) {
+    res.status(401)
+    throw new Error('User not found')
+  }
+  // Make sure logged-in user owns goal
+  if (goal.user.toString() !== user.id) {
+    res.status(401)
+    throw new Error('User not authorized')
   }
 
   await goal.deleteOne()
