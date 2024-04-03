@@ -7,7 +7,7 @@ import { login, reset } from '../features/auth/authSlice'
 import Spinner from '../components/Spinner'
 
 function Login () {
-  const [formData, setFromData] = useState ({
+  const [formData, setFormData] = useState ({
     email: '',
     password: '',
   })
@@ -28,7 +28,7 @@ function Login () {
   }, [user, isError, isSuccess, message, navigate, dispatch])  // Dependencies: watch for these states/events
 
   const onChange = (e) => {
-    setFromData((prevState) => ({  // () => ({}) means set func = to object
+    setFormData((prevState) => ({  // () => ({}) means set func = to object
       ...prevState,  // All the stuff typed in the previous form fields
       [e.target.name]: e.target.value,  // Stuff typed in current form field
     }))

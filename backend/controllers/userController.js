@@ -65,7 +65,6 @@ const loginUser = asyncHandler(async (req, res) => {
 
   // Lookup user by email
   const user = await User.findOne({email})
-  console.log('Finished email look-up')
 
   // if email exists check text password against stored hashed password
   if (user && (await bcrypt.compare(password, user.password))) {
@@ -91,7 +90,7 @@ const loginUser = asyncHandler(async (req, res) => {
 // @route   GET /api/users/me
 // @access  Private
 const getMe = asyncHandler(async (req, res) => {
-  req.status(200).json(req.user)
+  res.status(200).json(req.user)
 })
 
 

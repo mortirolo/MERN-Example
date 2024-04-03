@@ -68,7 +68,7 @@ export const goalSlice = createSlice({
   reducers: {
     // Unlike the user state, goal state does not need to persist
     // therefore, reset it to its initial state
-    reset: (state) => initialState
+    reset: (state) => initialState,
   },
   extraReducers: (builder) => {
     builder

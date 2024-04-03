@@ -106,7 +106,7 @@ export const authSlice = createSlice({
       .addCase(logout.fulfilled, (state) => {
         state.user = null
       })
-  }
+  },
 })
 
 // Following export allows us to import reset into other components where it is to be called

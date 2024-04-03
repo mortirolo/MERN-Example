@@ -7,8 +7,8 @@ const createGoal = async (goalData, token) => {
   // Authorization header for access to protected route
   const config = {
     headers: {
-      Authorization: `Bearer ${token}`
-    }
+      Authorization: `Bearer ${token}`,
+    },
   }
 
   const response = await axios.post(API_URL, goalData, config)
@@ -20,7 +20,7 @@ const getGoals = async (token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
-    }
+    },
   }
 
   const response = await axios.get(API_URL, config)
@@ -32,7 +32,7 @@ const deleteGoal = async (goalId, token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
-    }
+    },
   }
 
   const response = await axios.delete(API_URL + goalId, config)

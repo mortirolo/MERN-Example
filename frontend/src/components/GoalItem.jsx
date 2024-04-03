@@ -1,12 +1,12 @@
 import { useDispatch } from 'react-redux'
 import { deleteGoal } from '../features/goals/goalSlice'
 
-function GoalItem ({goal}) {
+function GoalItem ({ goal }) {
   const dispatch = useDispatch()
 
   return (
-    <div className="goal goal-color" >
-      <div className="goal-color">
+    <div className='goal goal-color' >
+      <div className='goal-color'>
         {new Date(goal.createdAt).toLocaleString('en-US')}
       </div>
       <h2 className='goal-color' >{goal.text}</h2>

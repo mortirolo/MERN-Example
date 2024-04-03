@@ -5,7 +5,6 @@ import Spinner from '../components/Spinner'
 import GoalForm from '../components/GoalForm'
 import GoalItem from '../components/GoalItem'
 import { getGoals, reset } from '../features/goals/goalSlice'
-import { get } from 'mongoose'
 
 function Dashboard() {
   const navigate = useNavigate()  // Initialize navigate, dispatch
@@ -37,7 +36,7 @@ function Dashboard() {
 
   return (
     <>
-      <section className="heading">
+      <section className='heading'>
         <h1>Welcome {user && user.name} </h1>
         <p>Goals Dashboard</p>
       </section>

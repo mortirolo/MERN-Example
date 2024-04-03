@@ -1,6 +1,6 @@
 const asyncHandler = require('express-async-handler');  // Use express error handler to handle async-await statements instead of try-catch
-const Goal = require('../models/goalModel.js');
-const User = require('../models/userModel.js');
+const Goal = require('../models/goalModel');
+const User = require('../models/userModel');
 
 // Prior to connecting to MongDB
 // const getGoals = (req, res) => {
@@ -23,7 +23,7 @@ const getGoals = asyncHandler(async (req, res) => {
 
 
 // @desc    Set goal
-// @route   POST /api/goal
+// @route   POST /api/goals
 // @access  Private
 const setGoal = asyncHandler(async (req, res) => {
   // console.log(req.body)  // Test msg
