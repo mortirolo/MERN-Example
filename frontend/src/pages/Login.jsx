@@ -25,7 +25,7 @@ function Login () {
     if (isError) { toast.error(message) }
     if (isSuccess || user) { navigate('/') }
     dispatch(reset())
-  }, [user, isError, isSuccess, message, navigate, dispatch])  // watch for these states/events
+  }, [user, isError, isSuccess, message, navigate, dispatch])  // Dependencies: watch for these states/events
 
   const onChange = (e) => {
     setFromData((prevState) => ({  // () => ({}) means set func = to object

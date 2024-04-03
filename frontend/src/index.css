@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: #446f90;
 }
 
 body {
@@ -92,8 +93,11 @@ h3 {
   gap: 10px;
 }
 
-.goal {
+.goal-color {
   background-color: #f4f4f4;
+}
+
+.goal {
   margin: 10px 0;
   padding: 20px 0 10px;
   position: relative;
