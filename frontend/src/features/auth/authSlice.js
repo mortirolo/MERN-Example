@@ -59,7 +59,9 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {  // Not asynchronous or Thunk funcs
-    reset: (state) => {  // Reset state back to initial values when loading page
+    // Reset state back to initial values when loading page, except for user
+    // user must persist 
+    reset: (state) => {
       state.isLoading = false
       state.isSuccess = false
       state.isError = false
@@ -108,5 +110,6 @@ export const authSlice = createSlice({
 })
 
 // Following export allows us to import reset into other components where it is to be called
+// reset has to be exported from slice actions
 export const { reset } = authSlice.actions
-export default authSlice.reducer  // Need above line to export this
+export default authSlice.reducer  // Add reducer to app/store
