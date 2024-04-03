@@ -33,7 +33,7 @@ const login = async (userData) => {
 }
 
 // Logout user
-const logout = () => {
+const logout = async () => {
   localStorage.removeItem('user')
 }
 
