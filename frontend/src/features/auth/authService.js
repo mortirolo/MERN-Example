@@ -1,4 +1,4 @@
-import axios from 'axios'  // similar to POSTMAN but used from within our app
+import axios from 'axios'  // Axios is http client that runs on the server and browser
 
 // ./frontend/package.json contains proxy var which inserts https://localhost:5000
 // in front of following URL
