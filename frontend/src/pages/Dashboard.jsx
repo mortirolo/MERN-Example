@@ -28,7 +28,9 @@ function Dashboard() {
     return () => {
       dispatch(reset())
     }
-  }, [user, navigate, isError, message, dispatch])  // Dependencies
+  }, [user, navigate, dispatch])
+  //}, [user, navigate, dispatch]) // Theses deps cause loading error on logout: isError, message])  // Dependencies
+  //})//, [user, navigate, dispatch]) // Theses deps cause loading error on logout: isError, message])  // Dependencies
 
   if (isLoading) {
     return <Spinner />
