@@ -13,7 +13,9 @@ function Dashboard() {
   const { user } = useSelector((state) => state.auth)  // get user from state.auth
   const { goals, isLoading, isError, message } = useSelector((state) => state.goals)
 
+  // useEffect is guaranteed to run at least once when the component mounts
   useEffect(() => {
+    // Code prior to return runs at time of mount and when a listed dependency changes
     if (isError) {
       console.log(message)
     }
@@ -24,11 +26,12 @@ function Dashboard() {
     // Fetch goals from backend and put them in goals
     dispatch(getGoals())
 
-    // Clear state when component unmounts
+    // Clear state when component unmounts; gets triggered by unmounting
     return () => {
       dispatch(reset())
     }
-  }, [user, navigate, dispatch])
+  }, [user])
+  //}, [user, navigate, dispatch])
   //}, [user, navigate, dispatch]) // Theses deps cause loading error on logout: isError, message])  // Dependencies
   //})//, [user, navigate, dispatch]) // Theses deps cause loading error on logout: isError, message])  // Dependencies
 
