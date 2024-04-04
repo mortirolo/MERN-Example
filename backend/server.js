@@ -26,6 +26,8 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../frontend/build')));  // location of prod static assets
   app.get(
     '*',
+    // Point any routes, other than goals,users list above, to index.html 
+    // Ex: made-up routes go to homepage
     (req, res) => res.sendFile(
       path.resolve(__dirname, '../', 'frontend', 'build', 'index.html')
     )
